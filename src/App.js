@@ -56,7 +56,7 @@ const CodeRainBackground = () => {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 0,
-        opacity: 0.15
+        opacity: 0.3
       }}
     />
   );
@@ -99,7 +99,7 @@ export default function Portfolio() {
           &lt; MD_ALIF_JASIM /&gt;
         </div>
         <div style={{ display: 'flex', gap: '30px' }}>
-          {['home', 'projects', 'skills', 'contact'].map(item => (
+          {['home', 'projects', 'skills', 'certifications', 'contact'].map(item => (
             <button
               key={item}
               onClick={() => scrollToSection(item)}
@@ -360,14 +360,52 @@ export default function Portfolio() {
   gap: '8px'
 }}>
   <Code2 size={18} /> LINKEDIN
-</a>
+              </a>
           </div>
-          <div style={{ color: '#6b7280', fontSize: '14px' }}>
-            <p>📍 Yonkers, New York</p>
-            <p>🔒 Security Clearance Eligible - Active FPS/DHS Pipeline</p>
+          </div>
+        </section>
+
+
+      {/* CERTIFICATIONS */}
+      <section id="certifications" style={{
+        width: '100%',
+        minHeight: '100vh',
+        padding: '80px 40px',
+        backgroundColor: 'rgba(30, 41, 59, 0.8)',
+        borderTop: '2px solid #22c55e',
+        boxSizing: 'border-box',
+        position: 'relative',
+        zIndex: 10
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '48px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+            &gt; CERTIFICATIONS
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+            {[
+              
+              { name: 'CompTIA Security+', status: 'IN_PROGRESS', color: '#4ade80' },
+              { name: 'Google Cybersecurity Certificate', status: 'COMPLETED_2026', color: '#22a7c5' },
+              { name: 'FPS/DHS Clearance', status: 'ACTIVE_TRACK', color: '#fbbf24' }
+            ].map((cert, idx) => (
+              <div key={idx} style={{
+                border: '2px solid ' + cert.color,
+                padding: '20px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(34, 197, 94, 0.05)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <h3 style={{ color: cert.color, margin: 0, fontSize: '18px' }}>{cert.name}</h3>
+                <span style={{ backgroundColor: cert.color + '20', color: cert.color, padding: '6px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                  {cert.status}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+          </div>
   );
 }
