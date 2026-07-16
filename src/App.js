@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Code2, Server, Mail, ExternalLink } from 'lucide-react';
+import { Shield, Code2, Server, Mail } from 'lucide-react';
 
 const CodeRainBackground = () => {
   const canvasRef = React.useRef(null);
@@ -227,7 +227,7 @@ export default function Portfolio() {
                 <Code2 size={32} style={{ color: '#4ade80', marginBottom: '15px' }} />
                 <h3 style={{ color: '#22c55e', marginTop: 0, marginBottom: '10px' }}>{project.name}</h3>
                 <p style={{ color: '#9ca3af', fontSize: '14px', lineHeight: '1.6' }}>{project.desc}</p>
-                <a href="#" style={{ color: '#4ade80', textDecoration: 'none', fontSize: '12px', marginTop: '15px', display: 'inline-block' }}>
+                <a href="https://github.com/Md-Alif-Jasim/pi-adhan-clock" style={{ color: '#4ade80', textDecoration: 'none', fontSize: '12px', marginTop: '15px', display: 'inline-block' }}>
                   → GitHub
                 </a>
               </div>
