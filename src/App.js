@@ -1,5 +1,67 @@
 import React, { useState } from 'react';
-import { Shield, Code2, Server, Mail } from 'lucide-react';
+import { Shield, Code2, Server, Mail, ExternalLink } from 'lucide-react';
+
+const CodeRainBackground = () => {
+  const canvasRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const codeChars = '01</>[](){}';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(0);
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff41';
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const char = codeChars[Math.floor(Math.random() * codeChars.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+          drops[i] = 0;
+        }
+        drops[i]+= 0.5;
+      }
+      requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        zIndex: 0,
+        opacity: 0.15
+      }}
+    />
+  );
+};
+
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
@@ -16,6 +78,7 @@ export default function Portfolio() {
 
   return (
     <div style={{ width: '100%', backgroundColor: '#0f172a', color: '#fff', fontFamily: 'monospace' }}>
+      <CodeRainBackground />
       {/* NAVBAR */}
       <nav style={{
         position: 'fixed',
@@ -285,6 +348,19 @@ export default function Portfolio() {
             }}>
               <Mail size={18} /> EMAIL
             </a>
+            <a href="https://www.linkedin.com/in/md-jasim-471521238/" style={{
+  padding: '12px 30px',
+  backgroundColor: '#374151',
+  color: '#22c55e',
+  textDecoration: 'none',
+  borderRadius: '6px',
+  fontWeight: 'bold',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px'
+}}>
+  <Code2 size={18} /> LINKEDIN
+</a>
           </div>
           <div style={{ color: '#6b7280', fontSize: '14px' }}>
             <p>📍 Yonkers, New York</p>
