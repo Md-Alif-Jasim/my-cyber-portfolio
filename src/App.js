@@ -98,8 +98,8 @@ export default function Portfolio() {
         <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#22c55e' }}>
           &lt; MD_ALIF_JASIM /&gt;
         </div>
-        <div style={{ display: 'flex', gap: '30px' }}>
-          {['home', 'projects', 'skills', 'certifications', 'contact'].map(item => (
+        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', maxWidth: '300px' }}>
+  {['home', 'projects', 'skills', 'certifications', 'contact'].map(item => (
             <button
               key={item}
               onClick={() => scrollToSection(item)}
