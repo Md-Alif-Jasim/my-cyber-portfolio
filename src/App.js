@@ -82,41 +82,48 @@ export default function Portfolio() {
       {/* NAVBAR */}
       <nav style={{
         position: 'fixed',
-        top: 0,
-        width: '100%',
-        height: '60px',
-        backgroundColor: '#0f172a',
-        borderBottom: '2px solid #22c55e',
-        zIndex: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingLeft: '40px',
-        paddingRight: '40px',
-        boxSizing: 'border-box'
+  top: 0,
+  width: '100%',
+  height: '60px',
+  backgroundColor: '#0f172a',
+  borderBottom: '2px solid #22c55e',
+  zIndex: 50,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  paddingLeft: '15px',
+  paddingRight: '10px',
+  boxSizing: 'border-box'
       }}>
-        <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#22c55e' }}>
+        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#22c55e', marginRight: '20px' }}>
           &lt; MD_ALIF_JASIM /&gt;
         </div>
-        <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', maxWidth: '300px' }}>
+        <div style={{ 
+  display: 'flex', 
+  gap: '8px', 
+  fontSize: '12px',
+  flexWrap: 'wrap',
+  overflow: 'hidden'
+}}>
   {['home', 'projects', 'skills', 'certifications', 'contact'].map(item => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: activeSection === item ? '#22c55e' : '#9ca3af',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                textTransform: 'capitalize'
-              }}
-            >
-              [{item}]
-            </button>
-          ))}
-        </div>
+    <button
+      key={item}
+      onClick={() => scrollToSection(item)}
+      style={{
+        background: 'none',
+        border: 'none',
+        color: activeSection === item ? '#22c55e' : '#9ca3af',
+        cursor: 'pointer',
+        fontSize: '11px',
+        fontWeight: 'bold',
+        textTransform: 'capitalize',
+        whiteSpace: 'nowrap'
+      }}
+    >
+      [{item}]
+    </button>
+  ))}
+</div>
       </nav>
 
       {/* HERO */}
@@ -126,7 +133,7 @@ export default function Portfolio() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '60px',
+        marginTop: '75px',
         backgroundColor: '#0f172a'
       }}>
         <div style={{ textAlign: 'center' }}>
@@ -187,8 +194,8 @@ export default function Portfolio() {
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '48px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', paddingLeft: '15px', paddingRight: '15px', boxSizing: 'border-box' }}>
+          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
             &gt; ACTIVE_PROJECTS
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
@@ -245,8 +252,8 @@ export default function Portfolio() {
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '48px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', paddingLeft: '15px', paddingRight: '15px', boxSizing: 'border-box' }}>
+          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
             &gt; TECHNICAL_STACK
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
@@ -302,6 +309,48 @@ export default function Portfolio() {
         </div>
       </section>
 
+
+      {/* CERTIFICATIONS */}
+      <section id="certifications" style={{
+        width: '100%',
+        minHeight: '100vh',
+        padding: '80px 40px',
+        backgroundColor: 'rgba(30, 41, 59, 0.8)',
+        borderTop: '2px solid #22c55e',
+        boxSizing: 'border-box',
+        position: 'relative',
+        zIndex: 10
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+            &gt; CERTIFICATIONS
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+            {[
+              
+              { name: 'CompTIA Security+', status: 'IN_PROGRESS', color: '#4ade80' },
+              { name: 'Google Cybersecurity Certificate', status: 'COMPLETED_2026', color: '#22a7c5' },
+              { name: 'FPS/DHS Clearance', status: 'ACTIVE_TRACK', color: '#fbbf24' }
+            ].map((cert, idx) => (
+              <div key={idx} style={{
+                border: '2px solid ' + cert.color,
+                padding: '20px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(34, 197, 94, 0.05)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <h3 style={{ color: cert.color, margin: 0, fontSize: '18px' }}>{cert.name}</h3>
+                <span style={{ backgroundColor: cert.color + '20', color: cert.color, padding: '6px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
+                  {cert.status}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONTACT */}
       <section id="contact" style={{
         width: '100%',
@@ -315,8 +364,8 @@ export default function Portfolio() {
         boxSizing: 'border-box'
       }}>
         <div style={{ textAlign: 'center', maxWidth: '600px' }}>
-          <h2 style={{ fontSize: '48px', color: '#22c55e', marginBottom: '20px' }}>
-            &gt; CONNECT
+          <h2 style={{ fontSize: '28px', color: '#22c55e', marginBottom: '20px' }}>
+            &gt; CONNECT WITH ME
           </h2>
           <p style={{ color: '#9ca3af', marginBottom: '40px', fontSize: '16px' }}>
             Open to cybersecurity opportunities, federal employment, and innovative projects
@@ -364,48 +413,7 @@ export default function Portfolio() {
           </div>
           </div>
         </section>
-
-
-      {/* CERTIFICATIONS */}
-      <section id="certifications" style={{
-        width: '100%',
-        minHeight: '100vh',
-        padding: '80px 40px',
-        backgroundColor: 'rgba(30, 41, 59, 0.8)',
-        borderTop: '2px solid #22c55e',
-        boxSizing: 'border-box',
-        position: 'relative',
-        zIndex: 10
-      }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '48px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
-            &gt; CERTIFICATIONS
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
-            {[
-              
-              { name: 'CompTIA Security+', status: 'IN_PROGRESS', color: '#4ade80' },
-              { name: 'Google Cybersecurity Certificate', status: 'COMPLETED_2026', color: '#22a7c5' },
-              { name: 'FPS/DHS Clearance', status: 'ACTIVE_TRACK', color: '#fbbf24' }
-            ].map((cert, idx) => (
-              <div key={idx} style={{
-                border: '2px solid ' + cert.color,
-                padding: '20px',
-                borderRadius: '6px',
-                backgroundColor: 'rgba(34, 197, 94, 0.05)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}>
-                <h3 style={{ color: cert.color, margin: 0, fontSize: '18px' }}>{cert.name}</h3>
-                <span style={{ backgroundColor: cert.color + '20', color: cert.color, padding: '6px 12px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', whiteSpace: 'nowrap' }}>
-                  {cert.status}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        
           </div>
   );
 }
