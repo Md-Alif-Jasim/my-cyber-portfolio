@@ -77,7 +77,52 @@ export default function Portfolio() {
   };
 
   return (
-    <div style={{ width: '100%', backgroundColor: '#0f172a', color: '#fff', fontFamily: 'monospace' }}>
+    <div style={{ width: '100%', backgroundColor: '#0d1117', color: '#ffffff', fontFamily: 'monospace' }}>
+      <style>{`
+      html, body {
+    background-color: #0d1117 !important;
+    color: #ffffff !important;
+      }
+
+  * {
+    transition: all 0.5s ease;
+  }
+  
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 255, 65, 0.2);
+  }
+  
+  a:hover {
+    transform: translateX(4px);
+  }
+  
+  section {
+    animation: fadeIn 0.6s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 255, 65, 0.15);
+  }
+`}</style>
+      
       <CodeRainBackground />
       {/* NAVBAR */}
       <nav style={{
@@ -85,7 +130,7 @@ export default function Portfolio() {
   top: 0,
   width: '100%',
   height: '60px',
-  backgroundColor: '#0f172a',
+  backgroundColor: '#0d1117',
   borderBottom: '2px solid #22c55e',
   zIndex: 50,
   display: 'flex',
@@ -95,7 +140,7 @@ export default function Portfolio() {
   paddingRight: '10px',
   boxSizing: 'border-box'
       }}>
-        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#22c55e', marginRight: '20px' }}>
+        <div style={{ fontSize: '14px', fontWeight: 'bold', color: '#ffffff', marginRight: '20px' }}>
           &lt; MD_ALIF_JASIM /&gt;
         </div>
         <div style={{ 
@@ -112,7 +157,7 @@ export default function Portfolio() {
       style={{
         background: 'none',
         border: 'none',
-        color: activeSection === item ? '#22c55e' : '#9ca3af',
+        color: activeSection === item ? '#ffffff' : '#ffffff',
         cursor: 'pointer',
         fontSize: '11px',
         fontWeight: 'bold',
@@ -134,20 +179,20 @@ export default function Portfolio() {
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '75px',
-        backgroundColor: '#0f172a'
+        backgroundColor: '#0d1117'
       }}>
         <div style={{ textAlign: 'center' }}>
-          <Shield size={80} style={{ color: '#22c55e', marginBottom: '30px' }} />
-          <h1 style={{ fontSize: '60px', color: '#22c55e', margin: '0 0 10px 0', fontWeight: '900' }}>
+          <Shield size={80} style={{ color: '#ffffff', marginBottom: '30px' }} />
+          <h1 style={{ fontSize: '60px', color: '#ffffff', margin: '0 0 10px 0', fontWeight: '900' }}>
             CYBER SECURITY
           </h1>
-          <h2 style={{ fontSize: '40px', color: '#4ade80', margin: '0 0 40px 0' }}>
+          <h2 style={{ fontSize: '40px', color: '#ffffff', margin: '0 0 40px 0' }}>
             &lt;SPECIALIST /&gt;
           </h2>
-          <p style={{ fontSize: '16px', color: '#9ca3af', marginBottom: '20px' }}>
+          <p style={{ fontSize: '16px', color: '#ffffff', marginBottom: '20px' }}>
             Full-Stack Security Practitioner | B.S. Computer Science
           </p>
-          <p style={{ fontSize: '14px', color: '#6b7280', marginBottom: '40px' }}>
+          <p style={{ fontSize: '14px', color: '#ffffff', marginBottom: '40px' }}>
             Network Intrusion Detection | Python Automation | Federal Security Pipeline
           </p>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
@@ -155,7 +200,7 @@ export default function Portfolio() {
               onClick={() => scrollToSection('projects')}
               style={{
                 padding: '12px 30px',
-                backgroundColor: '#22c55e',
+                backgroundColor: '#ffffff',
                 color: '#000',
                 border: 'none',
                 borderRadius: '6px',
@@ -171,7 +216,7 @@ export default function Portfolio() {
               style={{
                 padding: '12px 30px',
                 backgroundColor: 'transparent',
-                color: '#22c55e',
+                color: '#ffffff',
                 border: '2px solid #22c55e',
                 borderRadius: '6px',
                 fontWeight: 'bold',
@@ -190,12 +235,12 @@ export default function Portfolio() {
         width: '100%',
         minHeight: '100vh',
         padding: '80px 40px',
-        backgroundColor: '#1e293b',
+        backgroundColor: '#161b22',
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', paddingLeft: '15px', paddingRight: '15px', boxSizing: 'border-box' }}>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '28px', color: '#ffffff', textAlign: 'center', marginBottom: '60px' }}>
             &gt; ACTIVE_PROJECTS
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
@@ -222,7 +267,7 @@ export default function Portfolio() {
                 onMouseLeave={() => setHoveredProject(null)}
                 style={{
                   border: '2px solid',
-                  borderColor: hoveredProject === project.id ? '#4ade80' : '#22c55e',
+                  borderColor: hoveredProject === project.id ? '#4ade80' : '#ffffff',
                   padding: '30px',
                   borderRadius: '6px',
                   backgroundColor: hoveredProject === project.id ? 'rgba(74, 222, 128, 0.15)' : 'rgba(34, 197, 94, 0.05)',
@@ -232,8 +277,8 @@ export default function Portfolio() {
                 }}
               >
                 <Code2 size={32} style={{ color: '#4ade80', marginBottom: '15px' }} />
-                <h3 style={{ color: '#22c55e', marginTop: 0, marginBottom: '10px' }}>{project.name}</h3>
-                <p style={{ color: '#9ca3af', fontSize: '14px', lineHeight: '1.6' }}>{project.desc}</p>
+                <h3 style={{ color: '#ffffff', marginTop: 0, marginBottom: '10px' }}>{project.name}</h3>
+                <p style={{ color: '#ffffff', fontSize: '14px', lineHeight: '1.6' }}>{project.desc}</p>
                 <a href="https://github.com/Md-Alif-Jasim/pi-adhan-clock" style={{ color: '#4ade80', textDecoration: 'none', fontSize: '12px', marginTop: '15px', display: 'inline-block' }}>
                   → GitHub
                 </a>
@@ -248,12 +293,12 @@ export default function Portfolio() {
         width: '100%',
         minHeight: '100vh',
         padding: '80px 40px',
-        backgroundColor: '#0f172a',
+        backgroundColor: '#0d1117',
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', paddingLeft: '15px', paddingRight: '15px', boxSizing: 'border-box' }}>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '28px', color: '#ffffff', textAlign: 'center', marginBottom: '60px' }}>
             &gt; TECHNICAL_STACK
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
@@ -285,7 +330,7 @@ export default function Portfolio() {
                   onMouseLeave={() => setHoveredSkill(null)}
                   style={{
                     border: '2px solid',
-                    borderColor: hoveredSkill === category.id ? '#4ade80' : '#22c55e',
+                    borderColor: hoveredSkill === category.id ? '#4ade80' : '#ffffff',
                     padding: '30px',
                     borderRadius: '6px',
                     backgroundColor: hoveredSkill === category.id ? 'rgba(74, 222, 128, 0.15)' : 'rgba(34, 197, 94, 0.05)',
@@ -294,8 +339,8 @@ export default function Portfolio() {
                   }}
                 >
                   <Icon size={32} style={{ color: '#4ade80', marginBottom: '15px' }} />
-                  <h3 style={{ color: '#22c55e', marginTop: 0, marginBottom: '20px' }}>{category.title}</h3>
-                  <ul style={{ color: '#9ca3af', listStyle: 'none', padding: 0 }}>
+                  <h3 style={{ color: '#ffffff', marginTop: 0, marginBottom: '20px' }}>{category.title}</h3>
+                  <ul style={{ color: '#ffffff', listStyle: 'none', padding: 0 }}>
                     {category.skills.map(skill => (
                       <li key={skill} style={{ marginBottom: '12px', fontSize: '14px' }}>
                         &gt; {skill}
@@ -315,14 +360,14 @@ export default function Portfolio() {
         width: '100%',
         minHeight: '100vh',
         padding: '80px 40px',
-        backgroundColor: 'rgba(30, 41, 59, 0.8)',
+        backgroundColor: 'rgba(22, 27, 34, 0.8)',
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box',
         position: 'relative',
         zIndex: 10
       }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', textAlign: 'center', marginBottom: '60px' }}>
+          <h2 style={{ fontSize: '28px', color: '#ffffff', textAlign: 'center', marginBottom: '60px' }}>
             &gt; CERTIFICATIONS
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
@@ -356,7 +401,7 @@ export default function Portfolio() {
         width: '100%',
         minHeight: '100vh',
         padding: '80px 40px',
-        backgroundColor: '#1e293b',
+        backgroundColor: '#161b22',
         borderTop: '2px solid #22c55e',
         display: 'flex',
         alignItems: 'center',
@@ -364,17 +409,17 @@ export default function Portfolio() {
         boxSizing: 'border-box'
       }}>
         <div style={{ textAlign: 'center', maxWidth: '600px' }}>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', marginBottom: '20px' }}>
+          <h2 style={{ fontSize: '28px', color: '#ffffff', marginBottom: '20px' }}>
             &gt; CONNECT WITH ME
           </h2>
-          <p style={{ color: '#9ca3af', marginBottom: '40px', fontSize: '16px' }}>
+          <p style={{ color: '#ffffff', marginBottom: '40px', fontSize: '16px' }}>
             Open to cybersecurity opportunities, federal employment, and innovative projects
           </p>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
             <a href="https://github.com/Md-Alif-Jasim" style={{
               padding: '12px 30px',
               backgroundColor: '#374151',
-              color: '#22c55e',
+              color: '#ffffff',
               textDecoration: 'none',
               borderRadius: '6px',
               fontWeight: 'bold',
@@ -387,7 +432,7 @@ export default function Portfolio() {
             <a href="mailto:mdalifjasim@gmail.com" style={{
               padding: '12px 30px',
               backgroundColor: '#374151',
-              color: '#22c55e',
+              color: '#ffffff',
               textDecoration: 'none',
               borderRadius: '6px',
               fontWeight: 'bold',
@@ -400,7 +445,7 @@ export default function Portfolio() {
             <a href="https://www.linkedin.com/in/md-jasim-471521238/" style={{
   padding: '12px 30px',
   backgroundColor: '#374151',
-  color: '#22c55e',
+  color: '#ffffff',
   textDecoration: 'none',
   borderRadius: '6px',
   fontWeight: 'bold',
@@ -409,11 +454,11 @@ export default function Portfolio() {
   gap: '8px'
 }}>
   <Code2 size={18} /> LINKEDIN
-              </a>
+            </a>
           </div>
           </div>
         </section>
-        
+
           </div>
   );
 }
