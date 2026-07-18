@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# 🛡️ Cyber Security Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive portfolio website showcasing cybersecurity projects, skills, and credentials with a Matrix-style aesthetic.
 
-## Available Scripts
+## 🌐 Live Demo
+[Visit Portfolio](https://mdalifjasim.com)
 
-In the project directory, you can run:
+## ✨ Features
+- **Matrix Code Rain Animation** - Dynamic background with falling code
+- **Responsive Design** - Works seamlessly on desktop and mobile
+- **Interactive Navigation** - Smooth scrolling between sections
+- **Project Showcase** - Featured cybersecurity projects with GitHub links
+- **Skills Overview** - Security OPS, Development, Infrastructure
+- **Certifications** - ISC2 CC, CompTIA Security+, FPS/DHS Pipeline
+- **Contact Section** - GitHub, Email, LinkedIn links
 
-### `npm start`
+## 🛠️ Tech Stack
+- **Frontend**: React.js
+- **Styling**: CSS-in-JS with Inline Styles
+- **Icons**: Lucide React
+- **Animation**: Canvas API
+- **Deployment**: Vercel
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📁 Project Structure
+src/
+├── App.js              # Main component
+├── index.js            # Entry point
+└── App.css             # Global styles
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Prerequisites
+- Node.js v20.17.0+
+- npm 10.8.2+
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
+```bash
+git clone https://github.com/Md-Alif-Jasim/my-cyber-portfolio.git
+cd my-cyber-portfolio
+npm install
+```
 
-### `npm run build`
+### Running Locally
+```bash
+npm start
+```
+Visit `http://localhost:3000` in your browser
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Building for Production
+```bash
+npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📋 Sections
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Home
+Hero section with quick introduction and call-to-action buttons
 
-### `npm run eject`
+### Projects
+- **PI_ADHAN_AUTOMATION** - Prayer scheduler with Python & Raspberry Pi
+- **SURICATA_7.0_NIDS** - Network Intrusion Detection System
+- **TRIP_PLANNER** - Full-stack web app with Google Maps & Firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Skills
+Organized by category: Security OPS, Development, Infrastructure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Certifications
+- CompTIA Security+ (In Progress)
+- B.S. Computer Science - Lehman College CUNY (Completed 2026)
+- FPS/DHS Federal Pipeline (Active Track)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Connect
+Links to GitHub, Email, and LinkedIn
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🔧 Customization
 
-## Learn More
+### Change Colors
+Edit color values in `App.js` (default: green #22c55e)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Update Projects
+Modify the projects array in the PROJECTS section with your own
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Change Matrix Speed
+Adjust `drops[i] += 0.5` in `CodeRainBackground` function
 
-### Code Splitting
+## 📱 Mobile Optimization
+- Responsive navbar with flexible spacing
+- Font sizes adjust for mobile devices
+- Touch-friendly buttons and navigation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Deployment
+Deployed on **Vercel** with automatic deployments on every push to main branch.
 
-### Analyzing the Bundle Size
+## 👨‍💼 About
+**Md Alif Jasim** - Cybersecurity Specialist & Full-Stack Developer
+- 📍 Yonkers, New York
+- 🔒 Security Clearance Eligible
+- 📧 mdalifjasim@gmail.com
+- 🔗 [GitHub](https://github.com/Md-Alif-Jasim)
+- 💼 [LinkedIn](https://linkedin.com/in/md-alif-jasim)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🙏 Acknowledgments
+- Lucide React for icons
+- Vercel for hosting
+- React team for the framework
