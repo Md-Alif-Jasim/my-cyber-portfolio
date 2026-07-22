@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Shield, Code2, Server, Mail } from 'lucide-react';
 
 const CodeRainBackground = () => {
-  const canvasRef = React.useRef(null);
+const canvasRef = React.useRef(null);
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
@@ -67,6 +67,8 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [hoveredProject, setHoveredProject] = useState(null);
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const [expandedJob, setExpandedJob] = useState(null);
 
   const scrollToSection = (id) => {
     setActiveSection(id);
@@ -150,7 +152,7 @@ export default function Portfolio() {
   flexWrap: 'wrap',
   overflow: 'hidden'
 }}>
-  {['home', 'projects', 'skills', 'certifications', 'contact'].map(item => (
+  {['home', 'projects', 'work-experiences', 'certifications', 'contact'].map(item => (
     <button
       key={item}
       onClick={() => scrollToSection(item)}
@@ -217,7 +219,7 @@ export default function Portfolio() {
                 padding: '12px 30px',
                 backgroundColor: 'transparent',
                 color: '#ffffff',
-                border: '2px solid #22c55e',
+                border: '2px solid #ffffff',
                 borderRadius: '6px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
@@ -288,7 +290,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* SKILLS */}
+     {/* WORK EXPERIENCE */}
       <section id="skills" style={{
         width: '100%',
         minHeight: '100vh',
@@ -297,63 +299,102 @@ export default function Portfolio() {
         borderTop: '2px solid #22c55e',
         boxSizing: 'border-box'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', paddingLeft: '15px', paddingRight: '15px', boxSizing: 'border-box' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '28px', color: '#ffffff', textAlign: 'center', marginBottom: '60px' }}>
-            &gt; TECHNICAL_STACK
+            &gt; WORK EXPERIENCE
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
             {[
-              { 
+              {
                 id: 1,
-                title: 'SECURITY_OPS', 
-                skills: ['Suricata NIDS', 'DHS/FPS Compliance', 'Threat Analysis', 'Network Security'],
-                icon: Shield
+                company: 'Global Security Solutions (GSS)',
+                role: 'Target Security Consultant',
+                period: 'Sept 2025 - Current',
+                location: 'Westchester County / NYC',
+                details: [
+                  'Manage security operations across multiple sites',
+                  'Oversee armed security personnel and protocols',
+                  'Implement DHS/FPS compliance standards',
+                  'Conduct threat assessments and risk management'
+                ]
               },
-              { 
-                id: 2,
-                title: 'DEVELOPMENT', 
-                skills: ['Python', 'JavaScript/React', 'Firebase', 'REST APIs'],
-                icon: Code2
-              },
-              { 
+              
+              {
                 id: 3,
-                title: 'INFRASTRUCTURE', 
-                skills: ['Raspberry Pi (Zero 2W, Pi 5)', 'Linux/Ubuntu', 'systemd', 'Network Switching'],
-                icon: Server
+                company: 'NYPD',
+                role: 'Police Officer',
+                period: 'Oct 2021 - Sep 2022',
+                location: 'New York 7th Pct',
+                details: [
+                  'Patrolled assigned sectors and maintained public order',
+                  'Responded to emergency calls and incidents',
+                  'Conducted investigations and evidence collection',
+                  'Developed crisis de-escalation and threat assessment skills'
+                ]
               },
-            ].map(category => {
-              const Icon = category.icon;
-              return (
-                <div 
-                  key={category.id}
-                  onMouseEnter={() => setHoveredSkill(category.id)}
-                  onMouseLeave={() => setHoveredSkill(null)}
+              {
+                id: 4,
+                company: 'Syzygy Integration',
+                role: 'QA Engineer',
+                period: 'Oct 2022 - Jan 2024',
+                location: 'West Conshohocken, PA',
+                details: [
+                  'Performed comprehensive software testing and quality assurance',
+                  'Identified and documented bugs and system vulnerabilities',
+                  'Collaborated with development teams on fixes',
+                  'Developed test automation scripts and protocols'
+                ]
+              },
+              
+            ].map(job => (
+              <div key={job.id} style={{
+                border: '2px solid #ffffff',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(34, 197, 94, 0.05)',
+                overflow: 'hidden'
+              }}>
+                <div
+                  onClick={() => setExpandedJob(expandedJob === job.id ? null : job.id)}
                   style={{
-                    border: '2px solid',
-                    borderColor: hoveredSkill === category.id ? '#4ade80' : '#ffffff',
-                    padding: '30px',
-                    borderRadius: '6px',
-                    backgroundColor: hoveredSkill === category.id ? 'rgba(74, 222, 128, 0.15)' : 'rgba(34, 197, 94, 0.05)',
-                    transition: 'all 0.3s',
-                    cursor: 'pointer'
+                    padding: '20px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    backgroundColor: expandedJob === job.id ? 'rgba(34, 197, 94, 0.1)' : 'transparent'
                   }}
                 >
-                  <Icon size={32} style={{ color: '#4ade80', marginBottom: '15px' }} />
-                  <h3 style={{ color: '#ffffff', marginTop: 0, marginBottom: '20px' }}>{category.title}</h3>
-                  <ul style={{ color: '#ffffff', listStyle: 'none', padding: 0 }}>
-                    {category.skills.map(skill => (
-                      <li key={skill} style={{ marginBottom: '12px', fontSize: '14px' }}>
-                        &gt; {skill}
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h3 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '18px' }}>{job.role}</h3>
+                    <p style={{ color: '#8b949e', margin: '0 0 4px 0', fontSize: '14px' }}>{job.company}</p>
+                    <p style={{ color: '#6e7681', margin: 0, fontSize: '12px' }}>{job.period} • {job.location}</p>
+                  </div>
+                  <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold' }}>
+                    {expandedJob === job.id ? '−' : '+'}
+                  </span>
                 </div>
-              );
-            })}
+                
+                {expandedJob === job.id && (
+                  <div style={{
+                    padding: '20px',
+                    borderTop: '1px solid #ffffff',
+                    backgroundColor: 'rgba(34, 197, 94, 0.03)'
+                  }}>
+                    <ul style={{ color: '#ffffff', listStyle: 'none', padding: 0, margin: 0 }}>
+                      {job.details.map((detail, idx) => (
+                        <li key={idx} style={{ marginBottom: '12px', fontSize: '14px', paddingLeft: '20px', position: 'relative' }}>
+                          <span style={{ position: 'absolute', left: 0, color: '#ffffff'}}>→</span>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-
+      </section> 
 
       {/* CERTIFICATIONS */}
       <section id="certifications" style={{
@@ -458,7 +499,74 @@ export default function Portfolio() {
           </div>
           </div>
         </section>
+              {/* ABOUT ME BUTTON */}
+      <button
+        onClick={() => setIsAboutOpen(!isAboutOpen)}
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          left: '20px',
+          padding: '12px 24px',
+          backgroundColor: '#ffffff',
+          color: '#000',
+          border: 'none',
+          borderRadius: '6px',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          zIndex: 100,
+          fontSize: '14px'
+        }}
+      >
+        {isAboutOpen ? '✕ CLOSE' : '👤 ABOUT ME'}
+      </button>
 
+      {/* ABOUT ME MODAL */}
+{isAboutOpen && (
+  <div style={{
+    position: 'fixed',
+    top: '60px',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 99,
+    padding: '20px'
+  }}>
+    <div style={{
+      backgroundColor: '#161b22',
+      padding: '40px',
+      borderRadius: '8px',
+      maxWidth: '600px',
+      color: '#ffffff',
+      border: '2px solid #ffffff',
+      maxHeight: '80vh',
+      overflow: 'auto'
+    }}>
+      <h2 style={{ color: '#ffffff', marginTop: 0 }}>ABOUT ME</h2>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
+      <img 
+        src="/mdjasim.jpeg" 
+        alt="Md Alif Jasim"
+        style={{
+          width: '150px',
+          borderRadius: '200px',
+          borderRadius: '50%',
+          border: '3px solid #ffffff',
+          objectFit: 'cover'
+        }}
+      />
+      </div>
+      
+      <p style={{ marginTop: '30px', borderTop: '1px solid #ffffff', paddingTop: '20px', fontStyle: 'italic' }}>
+        I'm driven by two core strengths: an obsessive curiosity about how technology works and how to protect it, paired with an uncompromising work ethic. These strengths serve a deeper purpose—my values. I'm committed to protecting people, their privacy, and the organizations they trust. Cybersecurity isn't just a career for me; it's a way to live those values while supporting my family. I thrive under pressure, maintaining composure and clarity even in the most severe attacks. Organizations can count on me to be both technically sharp and emotionally steady.
+      </p>
+      <p>When I'm not securing networks, you'll find me in my backyard garden in Yonkers, tending to fruit trees and vegetables, or working on my home cybersecurity lab.</p>
+    </div>
+  </div>
+)}
           </div>
   );
 }
