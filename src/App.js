@@ -66,7 +66,7 @@ const canvasRef = React.useRef(null);
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [hoveredProject, setHoveredProject] = useState(null);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  //const [hoveredSkill, setHoveredSkill] = useState(null);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [expandedJob, setExpandedJob] = useState(null);
 
@@ -553,7 +553,7 @@ export default function Portfolio() {
         style={{
           width: '150px',
           borderRadius: '200px',
-          borderRadius: '50%',
+          //borderRadius: '50%',
           border: '3px solid #ffffff',
           objectFit: 'cover'
         }}
