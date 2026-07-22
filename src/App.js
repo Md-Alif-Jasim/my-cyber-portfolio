@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, Code2, Server, Mail } from 'lucide-react';
 
 const CodeRainBackground = () => {
@@ -29,7 +29,7 @@ const canvasRef = React.useRef(null);
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
           drops[i] = 0;
         }
-        drops[i]+= 0.5;
+        drops[i]+= 0.1;
       }
       requestAnimationFrame(draw);
     };
@@ -69,14 +69,31 @@ export default function Portfolio() {
   //const [hoveredSkill, setHoveredSkill] = useState(null);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [expandedJob, setExpandedJob] = useState(null);
+  const [currentSkillIndex, setCurrentSkillIndex] = useState(0); 
 
   const scrollToSection = (id) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  setActiveSection(id);
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+useEffect(() => {
+  const skills = [
+    'SIEM Tools & Monitoring',
+    'Network Security & IDS/IPS',
+      'Linux Administration',
+      'SQL & Database Security',
+      'Assets, Threats & Vulnerabilities',
+      'Detection & Response (SOC)',
+      'Python Automation & Scripting'
+  ];
+  const interval = setInterval(() => {
+    setCurrentSkillIndex((prev) => (prev + 1) % skills.length);
+  }, 1500);
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <div style={{ width: '100%', backgroundColor: '#0d1117', color: '#ffffff', fontFamily: 'monospace' }}>
@@ -123,6 +140,34 @@ export default function Portfolio() {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 255, 65, 0.15);
   }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0) translateY(-50px); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  
+  @keyframes fadeScaleIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slideUpIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .hero-shield { animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s both; }
+  .hero-title { animation: fadeScaleIn 0.9s ease-out 0.5s both; }
+  .hero-subtitle { animation: slideInLeft 0.8s ease-out 0.8s both; }
+  .hero-text { animation: slideInLeft 0.8s ease-out 1s both; }
+  .hero-buttons { animation: slideUpIn 0.8s ease-out 1.2s both; }
+      
 `}</style>
       
       <CodeRainBackground />
@@ -184,20 +229,43 @@ export default function Portfolio() {
         backgroundColor: '#0d1117'
       }}>
         <div style={{ textAlign: 'center' }}>
-          <Shield size={80} style={{ color: '#ffffff', marginBottom: '30px' }} />
-          <h1 style={{ fontSize: '60px', color: '#ffffff', margin: '0 0 10px 0', fontWeight: '900' }}>
-            CYBER SECURITY
-          </h1>
-          <h2 style={{ fontSize: '40px', color: '#ffffff', margin: '0 0 40px 0' }}>
-            &lt;SPECIALIST /&gt;
-          </h2>
-          <p style={{ fontSize: '16px', color: '#ffffff', marginBottom: '20px' }}>
-            Full-Stack Security Practitioner | B.S. Computer Science
-          </p>
-          <p style={{ fontSize: '14px', color: '#ffffff', marginBottom: '40px' }}>
-            Network Intrusion Detection | Python Automation | Federal Security Pipeline
-          </p>
-          <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+  <Shield size={80} className="hero-shield" style={{ color: '#22c55e', marginBottom: '30px' }} />
+  <h1 className="hero-title" style={{ fontSize: '60px', color: '#22c55e', margin: '0 0 10px 0', fontWeight: '900' }}>
+    CYBER SECURITY
+  </h1>
+  <h2 className="hero-subtitle" style={{ fontSize: '40px', color: '#ffffff', margin: '0 0 40px 0' }}>
+    &lt;SPECIALIST /&gt;
+  </h2>
+  <p className="hero-text" style={{ fontSize: '16px', color: '#8b949e', marginBottom: '20px' }}>
+    Full-Stack Security Practitioner...
+  </p>
+  
+{(() => {
+  const skills = [
+    'SIEM Tools & Monitoring',
+    'Network Security & IDS/IPS',
+    'Linux Administration',
+    'SQL & Database Security',
+    'Assets, Threats & Vulnerabilities',
+    'Detection & Response (SOC)',
+    'Python Automation & Scripting'
+  ];
+  
+  return (
+    <p className="hero-text" style={{ 
+      fontSize: '18px', 
+      color: '#8b949e', 
+      marginBottom: '40px',
+      minHeight: '30px',
+      transition: 'opacity 0.5s ease-in-out'
+    }}>
+      {skills[currentSkillIndex]}
+    </p>
+  );
+})()}
+
+
+  <div className="hero-buttons" style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
             <button
               onClick={() => scrollToSection('projects')}
               style={{
@@ -291,7 +359,7 @@ export default function Portfolio() {
       </section>
 
      {/* WORK EXPERIENCE */}
-      <section id="skills" style={{
+      <section id="work-experiences" style={{
         width: '100%',
         minHeight: '100vh',
         padding: '80px 40px',
@@ -507,8 +575,8 @@ export default function Portfolio() {
         onClick={() => setIsAboutOpen(!isAboutOpen)}
         style={{
           position: 'fixed',
-          bottom: '20px',
-          left: '20px',
+          top: '70px',
+          right: '20px',
           padding: '12px 24px',
           backgroundColor: '#ffffff',
           color: '#000',
@@ -549,6 +617,22 @@ export default function Portfolio() {
       overflow: 'auto'
     }}>
       <h2 style={{ color: '#ffffff', marginTop: 0 }}>ABOUT ME</h2>
+        <button
+  onClick={() => setIsAboutOpen(false)}
+  style={{
+    position: 'absolute',
+    top: '20px',
+    right: '20px',
+    background: 'none',
+    border: 'none',
+    color: '#ffffff',
+    fontSize: '24px',
+    cursor: 'pointer'
+  }}
+>
+  ✕
+</button>
+      
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
       <img 
         src="/mdjasim.jpeg" 
@@ -563,10 +647,16 @@ export default function Portfolio() {
       />
       </div>
       
-      <p style={{ marginTop: '30px', borderTop: '1px solid #ffffff', paddingTop: '20px', fontStyle: 'italic' }}>
-        I'm driven by two core strengths: an obsessive curiosity about how technology works and how to protect it, paired with an uncompromising work ethic. These strengths serve a deeper purpose—my values. I'm committed to protecting people, their privacy, and the organizations they trust. Cybersecurity isn't just a career for me; it's a way to live those values while supporting my family. I thrive under pressure, maintaining composure and clarity even in the most severe attacks. Organizations can count on me to be both technically sharp and emotionally steady.
+      <p style={{ marginTop: '30px', borderTop: '1px solid #ffffff', paddingTop: '20px', fontStyle: 'italic', lineHeight: '1.8', textAlign: 'justify' }}>
+        I'm driven by two core strengths: an obsessive curiosity about how technology works and how to protect it, 
+        paired with an uncompromising work ethic. These strengths serve a deeper purpose; my values. I'm committed 
+        to protecting people, their privacy, and the organizations they trust. Cybersecurity isn't just a career 
+        for me; it's a way to live those values while supporting my family. I thrive under pressure, maintaining 
+        composure and clarity even in the most severe attacks. Organizations can count on me to be both technically 
+        sharp and emotionally steady.
       </p>
-      <p>When I'm not securing networks, you'll find me in my backyard garden in Yonkers, tending to fruit trees and vegetables, or working on my home cybersecurity lab.</p>
+      <p style={{ lineHeight: '1.8', textAlign: 'justify' }}>When I'm not securing networks, you'll find me in my backyard garden, tending to fruit trees and vegetables, 
+        or working on my home cybersecurity lab.</p>
     </div>
   </div>
 )}
