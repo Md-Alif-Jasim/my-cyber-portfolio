@@ -364,10 +364,13 @@ export default function Portfolio() {
                     backgroundColor: expandedJob === job.id ? 'rgba(34, 197, 94, 0.1)' : 'transparent'
                   }}
                 >
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+    <Server size={24} style={{ color: '#22c55e', marginTop: '2px', flexShrink: 0 }} />
                   <div>
                     <h3 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '18px' }}>{job.role}</h3>
                     <p style={{ color: '#8b949e', margin: '0 0 4px 0', fontSize: '14px' }}>{job.company}</p>
                     <p style={{ color: '#6e7681', margin: 0, fontSize: '12px' }}>{job.period} • {job.location}</p>
+                  </div>
                   </div>
                   <span style={{ color: '#ffffff', fontSize: '24px', fontWeight: 'bold' }}>
                     {expandedJob === job.id ? '−' : '+'}
